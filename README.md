@@ -1,236 +1,180 @@
-# Memo
-Mémos personnels – Git, Linux, Test logiciel, Data &amp; IA
-# 📘 Mémo personnel – John NG
+# 📘 Mémo Git & GitHub — Comprendre ce que je fais (pas juste exécuter)
 
-Ce dépôt est mon **carnet de mémoire technique**.  
-Il contient **tout ce que j’ai fait et appris**, étape par étape, pour pouvoir :
-- recommencer sur un nouvel ordinateur
-- travailler en formation (Test Logiciel, Data, IA)
-- ne pas paniquer quand j’oublie
-
-👉 **Je n’ai pas besoin de tout retenir : tout est écrit ici.**
+Ce document explique **pas à pas** les commandes Git que j’utilise,
+avec **le rôle de chaque ligne**, pour comprendre même quand je suis fatigué.
 
 ---
 
-## 🧠 Comprendre l’essentiel (avant les commandes)
+## 🧠 Les concepts essentiels (avant les commandes)
 
-- GitHub = un service **en ligne**
-- Mon ordinateur = environnement **local**
-- Git = l’outil qui permet de travailler et synchroniser
-- SSH = l’autorisation sécurisée entre mon PC et GitHub
-- Cloner = copier un dépôt GitHub sur mon PC pour travailler
+- **Working directory** : le dossier de mon projet sur mon ordinateur
+- **Stage / index** : zone intermédiaire où je prépare ce qui va être sauvegardé
+- **Repository local** : l’historique des versions sur mon PC
+- **Repository distant (GitHub)** : l’historique en ligne
+- **Commit** : une sauvegarde/version de mon projet
+- **Push** : envoyer mes commits vers GitHub
 
 ---
 
-# 🔹 ÉTAPE 1 — Vérifier si Git est installé
-Dans le terminal :
+## 🔹 Vérifier si Git est installé
+
 git --version
+👉 Demande à l’ordinateur :
 
-Résultat possible :
-- git version X.X.X → Git est déjà installé
-- command not found → Git n’est PAS installé
+“Est-ce que Git est installé, et quelle version ?”
 
-⚠️ Attention :
-- au début d’une ligne = commentaire (la commande ne s’exécute pas)
-- ~sudo est une erreur → il faut écrire sudo
+Si une version s’affiche → Git est installé
 
-# 🔹 ÉTAPE 2 — Installer Git (si absent)
+Si command not found → Git n’est pas installé
+
+🔹 Installer Git (si nécessaire)
+
 sudo apt update
+👉 Met à jour la liste des logiciels disponibles sur Linux.
 
 sudo apt install git
+👉 Installe Git sur l’ordinateur.
 
-Vérifier :
-git --version
+🔹 Configurer Git (UNE SEULE FOIS PAR MACHINE)
 
-# 🔹 ÉTAPE 3 — Configuration Git (UNE SEULE FOIS PAR MACHINE)
-**Ces informations identifient l’auteur des commits.**
-git config --global user.name "prénom nom"
+git config --global user.name "Prenom Nom"
+👉 Indique à Git qui est l’auteur des commits.
+
 git config --global user.email "mon-mail@gmail.com"
+👉 Associe un email à chaque commit (identité, pas un mot de passe).
 
-**Définir main comme branche par défaut :**
 git config --global init.defaultBranch main
+👉 Définit main comme branche par défaut pour tous les nouveaux projets.
 
-**Améliorer l’affichage :**
 git config --global color.ui auto
+👉 Active les couleurs pour mieux lire les messages Git.
 
-**Vérifier toute la configuration :**
 git config --global --list
+👉 Affiche toute la configuration Git actuelle.
 
-# 🔹 ÉTAPE 4 — Tester Git localement (premier dépôt)
-mkdir test-git
+🔹 Créer un nouveau projet Git
+mkdir PremierProjet
+👉 Crée un dossier de projet.
 
-cd test-git
+cd PremierProjet
+👉 Entre dans le dossier du projet.
 
 git init
+👉 Initialise un dépôt Git dans ce dossier
+(crée le dossier caché .git).
 
-**Renommer la branche si besoin :**
-git branch -m main
-
-**Créer un fichier test :**
-touch README.md
-
+🔹 Vérifier l’état du projet
 git status
+👉 Montre :
 
-# 🔹 ÉTAPE 5 — Comprendre GitHub vs local
-GitHub = dépôt distant (en ligne)
-Mon PC = dépôt local
+quels fichiers sont modifiés
 
-**Pour travailler, j’ai besoin d’une copie locale**
-➡️ Cette copie s’obtient avec git clone
+lesquels sont prêts à être sauvegardés
 
-# 🔹 ÉTAPE 6 — Créer une clé SSH (nouvel ordinateur)
-**Vérifier si une clé existe :**
-ls ~/.ssh
+s’il y a des erreurs
 
-**Si le dossier n’existe pas → créer une clé :**
+➡️ Commande réflexe à utiliser souvent.
+
+🔹 Ajouter des fichiers au stage (index)
+
+git add index.html styles.css
+👉 Dit à Git :
+
+“Je veux inclure ces fichiers dans la prochaine sauvegarde.”
+
+Les fichiers passent du working directory → stage.
+
+🔹 Créer une version (commit)
+
+git commit -m "Ajout des fichiers HTML et CSS de base"
+👉 Crée une version officielle du projet avec un message explicatif.
+
+-m = message
+
+Le message doit expliquer ce qui a changé
+
+🔹 Créer une clé SSH (connexion sécurisée à GitHub)
+
 ssh-keygen -t ed25519 -C "mon-mail@gmail.com"
-➡️ Appuyer sur Entrée à toutes les questions
+👉 Crée une paire de clés :
 
-**Vérifier :**
+clé privée (reste sur mon PC)
+
+clé publique (à donner à GitHub)
+
+➡️ Appuyer sur Entrée à toutes les questions.
+
 ls ~/.ssh
+👉 Vérifie que les clés existent.
 
-**Résultat attendu :**
-id_ed25519
-
-id_ed25519.pub
-
-**Afficher la clé publique :**
 cat ~/.ssh/id_ed25519.pub
+👉 Affiche la clé publique à copier sur GitHub.
 
-➡️ Copier la clé et l’ajouter sur GitHub :
-https://github.com/settings/keys
+🔹 Tester la connexion avec GitHub
 
-# 🔹 ÉTAPE 7 — Tester la connexion PC ↔ GitHub
 ssh -T git@github.com
+👉 Vérifie que mon PC est reconnu par GitHub.
 
-**Premier message possible :**
-Are you sure you want to continue connecting (yes/no)?
-➡️ Taper yes
+Résultat attendu :
 
-**Résultat attendu :**
-Hi ----66--! You've successfully authenticated, but GitHub does not provide shell access.
+“You’ve successfully authenticated…”
 
-# 🔹 ÉTAPE 8 — Cloner un dépôt GitHub sur mon PC
-Exemple :
+🔹 Relier le projet local à GitHub
 
-cd ~
+git remote add origin git@github.com:USERNAME/NOM_DU_REPO.git
+👉 Dit à Git :
 
-git clone git@github.com:----66--/Memo.git
+“Le dépôt distant (GitHub) s’appelle origin et voici son adresse.”
 
-cd Memo
+⚠️ Cette commande se fait une seule fois.
 
-ls
-
-1️⃣ Ouvre le fichier
-
-nano README.md
-
-2️⃣ Supprime tout le contenu
-
-Colle le README complet que je t’ai donné dans le message précédent
-
-3️⃣ Enregistre
-
-Ctrl + O
-
-Entrée
-
-Ctrl + X
-
-# 🚀 DERNIÈRE ÉTAPE — Sauvegarder sur GitHub
-Toujours dans ~/Memo :
-
-git status
-
-git add README.md
-
-git commit -m "README complet : installation Git, configuration et liaison GitHub"
-
-git push
-
-
-💤 Après ça : STOP
-
-J'ai installé Git
-
-compris local vs distant
-
-sécurisé mon PC avec SSH
-
-créé un repo perso
-
-documenté tout mon apprentissage
-
-## 🔧 Problème courant : `ERROR: Repository not found` lors d’un `git push`
-
-### Symptôme
-
-ERROR: Repository not found.
-fatal: Impossible de lire le dépôt distant.
-
-Cause la plus fréquente
-
-Le dépôt GitHub existe
-
-MAIS l’URL du dépôt distant (origin) est incorrecte
-(erreur de nom, de majuscules/minuscules, ou mauvais repo)
-
-⚠️ GitHub est sensible à la casse.
-
-Vérifier l’URL distante configurée
 git remote -v
+👉 Vérifie l’adresse du dépôt distant.
 
-Corriger l’URL du dépôt distant
-
-Aller sur GitHub → repo concerné
-
-Bouton Code → SSH
-
-Copier l’URL exacte, par exemple :
-
-git@github.com:USERNAME/NOM_DU_REPO.git
-
-
-Remplacer l’URL locale :
+🔹 Corriger l’adresse du dépôt distant (si erreur)
 
 git remote set-url origin git@github.com:USERNAME/NOM_DU_REPO.git
+👉 Remplace l’ancienne adresse par la bonne
+(ex : erreur de majuscules dans le nom du repo).
 
+🔹 Envoyer le projet sur GitHub (push)
 
-Vérifier :
-
-git remote -v
-
-Push correct après correction
 git push -u origin main
+👉 Envoie les commits locaux vers GitHub.
 
+origin = dépôt distant
 
-Le -u permet ensuite d’utiliser simplement :
+main = branche
+
+-u = mémorise la destination pour les prochains push
+
+Ensuite, il suffira de faire :
 
 git push
+🔁 Le cycle Git à retenir (le plus important)
 
-Rappel important
-
-git remote add origin ... → une seule fois
-
-Si origin existe déjà → utiliser git remote set-url
-
-
-👉 Enregistre (Ctrl + O, Entrée, Ctrl + X), puis sauvegarde sur GitHub :
-
-git add README.md
-git commit -m "Ajout mémo : erreur Repository not found et correction remote"
+git status
+git add .
+git commit -m "message clair"
 git push
+👉 Toujours dans cet ordre.
 
-🧠 Ce que j'ai acquis (important)
+🧯 Erreur fréquente : terminal bloqué avec >
+Si le terminal affiche > :
 
-Diagnostiquer une erreur Git
+la commande n’est pas terminée
 
-Corriger un remote
+souvent à cause de guillemets ou caractères spéciaux
 
-Comprendre la différence :
+👉 Solution immédiate :
+Ctrl + C
+🧠 Ce que je sais faire maintenant
+Créer un projet Git
 
-dépôt local
+Sauvegarder mon travail avec des commits
 
-dépôt distant
+Relier un projet à GitHub
 
-lien entre les deux
+Corriger une erreur de dépôt distant
+
+Comprendre ce que je fais, pas juste copier-coller
