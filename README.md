@@ -24,17 +24,15 @@ Il contient **tout ce que j’ai fait et appris**, étape par étape, pour pouvo
 
 # 🔹 ÉTAPE 1 — Vérifier si Git est installé
 Dans le terminal :
-
-```bash
 git --version
 
 Résultat possible :
-.git version X.X.X → Git est déjà installé
-.command not found → Git n’est PAS installé
+- git version X.X.X → Git est déjà installé
+- command not found → Git n’est PAS installé
 
 ⚠️ Attention :
-. # au début d’une ligne = commentaire (la commande ne s’exécute pas)
-. ~sudo est une erreur → il faut écrire sudo
+- # au début d’une ligne = commentaire (la commande ne s’exécute pas)
+- ~sudo est une erreur → il faut écrire sudo
 
 # 🔹 ÉTAPE 2 — Installer Git (si absent)
 sudo apt update
