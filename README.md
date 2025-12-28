@@ -44,8 +44,8 @@ git --version
 
 # 🔹 ÉTAPE 3 — Configuration Git (UNE SEULE FOIS PAR MACHINE)
 **Ces informations identifient l’auteur des commits.**
-git config --global user.name "John NG"
-git config --global user.email "johnmarereng06@gmail.com"
+git config --global user.name "prénom nom"
+git config --global user.email "mon-mail@gmail.com"
 
 **Définir main comme branche par défaut :**
 git config --global init.defaultBranch main
@@ -83,19 +83,19 @@ Mon PC = dépôt local
 ls ~/.ssh
 
 **Si le dossier n’existe pas → créer une clé :**
-ssh-keygen -t ed25519 -C "johnmarereng06@gmail.com"
+ssh-keygen -t ed51925 -C "mon-mail@gmail.com"
 ➡️ Appuyer sur Entrée à toutes les questions
 
 **Vérifier :**
 ls ~/.ssh
 
 **Résultat attendu :**
-id_ed25519
+id_ed51925
 
-id_ed25519.pub
+id_ed51925.pub
 
 **Afficher la clé publique :**
-cat ~/.ssh/id_ed25519.pub
+cat ~/.ssh/id_ed51925.pub
 
 ➡️ Copier la clé et l’ajouter sur GitHub :
 https://github.com/settings/keys
@@ -108,14 +108,14 @@ Are you sure you want to continue connecting (yes/no)?
 ➡️ Taper yes
 
 **Résultat attendu :**
-Hi jng06600! You've successfully authenticated, but GitHub does not provide shell access.
+Hi ----66--! You've successfully authenticated, but GitHub does not provide shell access.
 
 # 🔹 ÉTAPE 8 — Cloner un dépôt GitHub sur mon PC
 Exemple :
 
 cd ~
 
-git clone git@github.com:jng06600/Memo.git
+git clone git@github.com:----66--/Memo.git
 
 cd Memo
 
