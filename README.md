@@ -83,19 +83,19 @@ Mon PC = dépôt local
 ls ~/.ssh
 
 **Si le dossier n’existe pas → créer une clé :**
-ssh-keygen -t ed51925 -C "mon-mail@gmail.com"
+ssh-keygen -t ed25519 -C "mon-mail@gmail.com"
 ➡️ Appuyer sur Entrée à toutes les questions
 
 **Vérifier :**
 ls ~/.ssh
 
 **Résultat attendu :**
-id_ed51925
+id_ed25519
 
-id_ed51925.pub
+id_ed25519.pub
 
 **Afficher la clé publique :**
-cat ~/.ssh/id_ed51925.pub
+cat ~/.ssh/id_ed25519.pub
 
 ➡️ Copier la clé et l’ajouter sur GitHub :
 https://github.com/settings/keys
@@ -147,6 +147,7 @@ git add README.md
 git commit -m "README complet : installation Git, configuration et liaison GitHub"
 
 git push
+
 
 💤 Après ça : STOP
 
