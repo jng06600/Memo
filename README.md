@@ -17,59 +17,73 @@ avec **le rôle de chaque ligne**, pour comprendre même quand je suis fatigué.
 ---
 
 ## 🔹 Vérifier si Git est installé
+👉 Demande à l’ordinateur :
 ```
 git --version
 ```
-👉 Demande à l’ordinateur :
 
 “Est-ce que Git est installé, et quelle version ?”
-
 Si une version s’affiche → Git est installé
-
 Si command not found → Git n’est pas installé
 
 ## 🔹 Installer Git (si nécessaire)
+👉 Met à jour la liste des logiciels disponibles sur Linux.
 ```
 sudo apt update
 ```
-👉 Met à jour la liste des logiciels disponibles sur Linux.
+
+👉 Installe Git sur l’ordinateur.
 ```
 sudo apt install git
 ```
-👉 Installe Git sur l’ordinateur.
 
 ## 🔹 Configurer Git (UNE SEULE FOIS PAR MACHINE)
+👉 Indique à Git qui est l’auteur des commits.
 ```
 git config --global user.name "Prenom Nom"
 ```
-👉 Indique à Git qui est l’auteur des commits.
+
+👉 Associe un email à chaque commit (identité, pas un mot de passe).
 ```
 git config --global user.email "mon-mail@gmail.com"
 ```
-👉 Associe un email à chaque commit (identité, pas un mot de passe).
-```
-git config --global init.defaultBranch main```
+
 👉 Définit main comme branche par défaut pour tous les nouveaux projets.
+```
+git config --global init.defaultBranch main
+```
 
-git config --global color.ui auto
 👉 Active les couleurs pour mieux lire les messages Git.
+```
+git config --global color.ui auto
+```
 
-git config --global --list
 👉 Affiche toute la configuration Git actuelle.
+```
+git config --global --list
+```
 
 ## 🔹 Créer un nouveau projet Git
-mkdir PremierProjet
 👉 Crée un dossier de projet.
+```
+mkdir PremierProjet
+```
 
-cd PremierProjet
 👉 Entre dans le dossier du projet.
+```
+cd PremierProjet
+```
 
-git init
 👉 Initialise un dépôt Git dans ce dossier
 (crée le dossier caché .git).
+```
+git init
+```
 
 ## 🔹 Vérifier l’état du projet
+```
 git status
+```
 👉 Montre :
 
 quels fichiers sont modifiés
@@ -81,8 +95,9 @@ s’il y a des erreurs
 ➡️ Commande réflexe à utiliser souvent.
 
 ## 🔹 Ajouter des fichiers au stage (index)
-
+```
 git add index.html styles.css
+```
 👉 Dit à Git :
 
 “Je veux inclure ces fichiers dans la prochaine sauvegarde.”
@@ -90,8 +105,9 @@ git add index.html styles.css
 Les fichiers passent du working directory → stage.
 
 ## 🔹 Créer une version (commit)
-
+```
 git commit -m "Ajout des fichiers HTML et CSS de base"
+```
 👉 Crée une version officielle du projet avec un message explicatif.
 
 -m = message
@@ -99,8 +115,9 @@ git commit -m "Ajout des fichiers HTML et CSS de base"
 Le message doit expliquer ce qui a changé
 
 ## 🔹 Créer une clé SSH (connexion sécurisée à GitHub)
-
+```
 ssh-keygen -t ed25519 -C "mon-mail@gmail.com"
+```
 👉 Crée une paire de clés :
 
 clé privée (reste sur mon PC)
@@ -108,16 +125,20 @@ clé privée (reste sur mon PC)
 clé publique (à donner à GitHub)
 
 ➡️ Appuyer sur Entrée à toutes les questions.
-
+```
 ls ~/.ssh
+```
 👉 Vérifie que les clés existent.
 
+```
 cat ~/.ssh/id_ed25519.pub
+```
 👉 Affiche la clé publique à copier sur GitHub.
 
 ## 🔹 Tester la connexion avec GitHub
-
+```
 ssh -T git@github.com
+```
 👉 Vérifie que mon PC est reconnu par GitHub.
 
 Résultat attendu :
@@ -125,26 +146,31 @@ Résultat attendu :
 “You’ve successfully authenticated…”
 
 ## 🔹 Relier le projet local à GitHub
-
+```
 git remote add origin git@github.com:USERNAME/NOM_DU_REPO.git
+```
 👉 Dit à Git :
 
 “Le dépôt distant (GitHub) s’appelle origin et voici son adresse.”
 
 ⚠️ Cette commande se fait une seule fois.
 
+```
 git remote -v
+```
 👉 Vérifie l’adresse du dépôt distant.
 
 ## 🔹 Corriger l’adresse du dépôt distant (si erreur)
-
+```
 git remote set-url origin git@github.com:USERNAME/NOM_DU_REPO.git
+```
 👉 Remplace l’ancienne adresse par la bonne
 (ex : erreur de majuscules dans le nom du repo).
 
 ## 🔹 Envoyer le projet sur GitHub (push)
-
+```
 git push -u origin main
+```
 👉 Envoie les commits locaux vers GitHub.
 
 origin = dépôt distant
@@ -157,11 +183,12 @@ Ensuite, il suffira de faire :
 
 git push
 🔁 Le cycle Git à retenir (le plus important)
-
+```
 git status
 git add .
 git commit -m "message clair"
 git push
+```
 👉 Toujours dans cet ordre.
 
 🧯 Erreur fréquente : terminal bloqué avec >
