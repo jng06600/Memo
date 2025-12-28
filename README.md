@@ -17,8 +17,9 @@ avec **le rôle de chaque ligne**, pour comprendre même quand je suis fatigué.
 ---
 
 ## 🔹 Vérifier si Git est installé
-
+```
 git --version
+```
 👉 Demande à l’ordinateur :
 
 “Est-ce que Git est installé, et quelle version ?”
@@ -27,23 +28,27 @@ Si une version s’affiche → Git est installé
 
 Si command not found → Git n’est pas installé
 
-🔹 Installer Git (si nécessaire)
-
+## 🔹 Installer Git (si nécessaire)
+```
 sudo apt update
+```
 👉 Met à jour la liste des logiciels disponibles sur Linux.
-
+```
 sudo apt install git
+```
 👉 Installe Git sur l’ordinateur.
 
-🔹 Configurer Git (UNE SEULE FOIS PAR MACHINE)
-
+## 🔹 Configurer Git (UNE SEULE FOIS PAR MACHINE)
+```
 git config --global user.name "Prenom Nom"
+```
 👉 Indique à Git qui est l’auteur des commits.
-
+```
 git config --global user.email "mon-mail@gmail.com"
+```
 👉 Associe un email à chaque commit (identité, pas un mot de passe).
-
-git config --global init.defaultBranch main
+```
+git config --global init.defaultBranch main```
 👉 Définit main comme branche par défaut pour tous les nouveaux projets.
 
 git config --global color.ui auto
@@ -52,7 +57,7 @@ git config --global color.ui auto
 git config --global --list
 👉 Affiche toute la configuration Git actuelle.
 
-🔹 Créer un nouveau projet Git
+## 🔹 Créer un nouveau projet Git
 mkdir PremierProjet
 👉 Crée un dossier de projet.
 
@@ -63,7 +68,7 @@ git init
 👉 Initialise un dépôt Git dans ce dossier
 (crée le dossier caché .git).
 
-🔹 Vérifier l’état du projet
+## 🔹 Vérifier l’état du projet
 git status
 👉 Montre :
 
@@ -75,7 +80,7 @@ s’il y a des erreurs
 
 ➡️ Commande réflexe à utiliser souvent.
 
-🔹 Ajouter des fichiers au stage (index)
+## 🔹 Ajouter des fichiers au stage (index)
 
 git add index.html styles.css
 👉 Dit à Git :
@@ -84,7 +89,7 @@ git add index.html styles.css
 
 Les fichiers passent du working directory → stage.
 
-🔹 Créer une version (commit)
+## 🔹 Créer une version (commit)
 
 git commit -m "Ajout des fichiers HTML et CSS de base"
 👉 Crée une version officielle du projet avec un message explicatif.
@@ -93,7 +98,7 @@ git commit -m "Ajout des fichiers HTML et CSS de base"
 
 Le message doit expliquer ce qui a changé
 
-🔹 Créer une clé SSH (connexion sécurisée à GitHub)
+## 🔹 Créer une clé SSH (connexion sécurisée à GitHub)
 
 ssh-keygen -t ed25519 -C "mon-mail@gmail.com"
 👉 Crée une paire de clés :
@@ -110,7 +115,7 @@ ls ~/.ssh
 cat ~/.ssh/id_ed25519.pub
 👉 Affiche la clé publique à copier sur GitHub.
 
-🔹 Tester la connexion avec GitHub
+## 🔹 Tester la connexion avec GitHub
 
 ssh -T git@github.com
 👉 Vérifie que mon PC est reconnu par GitHub.
@@ -119,7 +124,7 @@ Résultat attendu :
 
 “You’ve successfully authenticated…”
 
-🔹 Relier le projet local à GitHub
+## 🔹 Relier le projet local à GitHub
 
 git remote add origin git@github.com:USERNAME/NOM_DU_REPO.git
 👉 Dit à Git :
@@ -131,13 +136,13 @@ git remote add origin git@github.com:USERNAME/NOM_DU_REPO.git
 git remote -v
 👉 Vérifie l’adresse du dépôt distant.
 
-🔹 Corriger l’adresse du dépôt distant (si erreur)
+## 🔹 Corriger l’adresse du dépôt distant (si erreur)
 
 git remote set-url origin git@github.com:USERNAME/NOM_DU_REPO.git
 👉 Remplace l’ancienne adresse par la bonne
 (ex : erreur de majuscules dans le nom du repo).
 
-🔹 Envoyer le projet sur GitHub (push)
+## 🔹 Envoyer le projet sur GitHub (push)
 
 git push -u origin main
 👉 Envoie les commits locaux vers GitHub.
@@ -168,7 +173,9 @@ souvent à cause de guillemets ou caractères spéciaux
 
 👉 Solution immédiate :
 Ctrl + C
-🧠 Ce que je sais faire maintenant
+
+**🧠 Ce que je sais faire maintenant**
+
 Créer un projet Git
 
 Sauvegarder mon travail avec des commits
