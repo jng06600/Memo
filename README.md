@@ -160,3 +160,77 @@ sécurisé mon PC avec SSH
 créé un repo perso
 
 documenté tout mon apprentissage
+
+## 🔧 Problème courant : `ERROR: Repository not found` lors d’un `git push`
+
+### Symptôme
+
+ERROR: Repository not found.
+fatal: Impossible de lire le dépôt distant.
+
+Cause la plus fréquente
+
+Le dépôt GitHub existe
+
+MAIS l’URL du dépôt distant (origin) est incorrecte
+(erreur de nom, de majuscules/minuscules, ou mauvais repo)
+
+⚠️ GitHub est sensible à la casse.
+
+Vérifier l’URL distante configurée
+git remote -v
+
+Corriger l’URL du dépôt distant
+
+Aller sur GitHub → repo concerné
+
+Bouton Code → SSH
+
+Copier l’URL exacte, par exemple :
+
+git@github.com:USERNAME/NOM_DU_REPO.git
+
+
+Remplacer l’URL locale :
+
+git remote set-url origin git@github.com:USERNAME/NOM_DU_REPO.git
+
+
+Vérifier :
+
+git remote -v
+
+Push correct après correction
+git push -u origin main
+
+
+Le -u permet ensuite d’utiliser simplement :
+
+git push
+
+Rappel important
+
+git remote add origin ... → une seule fois
+
+Si origin existe déjà → utiliser git remote set-url
+
+
+👉 Enregistre (Ctrl + O, Entrée, Ctrl + X), puis sauvegarde sur GitHub :
+
+git add README.md
+git commit -m "Ajout mémo : erreur Repository not found et correction remote"
+git push
+
+🧠 Ce que j'ai acquis (important)
+
+Diagnostiquer une erreur Git
+
+Corriger un remote
+
+Comprendre la différence :
+
+dépôt local
+
+dépôt distant
+
+lien entre les deux
