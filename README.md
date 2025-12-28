@@ -36,6 +36,7 @@ Résultat possible :
 
 # 🔹 ÉTAPE 2 — Installer Git (si absent)
 sudo apt update
+
 sudo apt install git
 
 Vérifier :
@@ -57,7 +58,9 @@ git config --global --list
 
 # 🔹 ÉTAPE 4 — Tester Git localement (premier dépôt)
 mkdir test-git
+
 cd test-git
+
 git init
 
 **Renommer la branche si besoin :**
@@ -65,6 +68,7 @@ git branch -m main
 
 **Créer un fichier test :**
 touch README.md
+
 git status
 
 # 🔹 ÉTAPE 5 — Comprendre GitHub vs local
@@ -87,6 +91,7 @@ ls ~/.ssh
 
 **Résultat attendu :**
 id_ed25519
+
 id_ed25519.pub
 
 **Afficher la clé publique :**
@@ -107,34 +112,50 @@ Hi jng06600! You've successfully authenticated, but GitHub does not provide shel
 
 # 🔹 ÉTAPE 8 — Cloner un dépôt GitHub sur mon PC
 Exemple :
+
 cd ~
+
 git clone git@github.com:jng06600/Memo.git
+
 cd Memo
+
 ls
 
 1️⃣ Ouvre le fichier
+
 nano README.md
 
 2️⃣ Supprime tout le contenu
+
 Colle le README complet que je t’ai donné dans le message précédent
 
 3️⃣ Enregistre
+
 Ctrl + O
+
 Entrée
+
 Ctrl + X
 
 # 🚀 DERNIÈRE ÉTAPE — Sauvegarder sur GitHub
 Toujours dans ~/Memo :
 
 git status
+
 git add README.md
+
 git commit -m "README complet : installation Git, configuration et liaison GitHub"
+
 git push
 
 💤 Après ça : STOP
 
 J'ai installé Git
+
 compris local vs distant
+
 sécurisé mon PC avec SSH
+
 créé un repo perso
+
 documenté tout mon apprentissage
